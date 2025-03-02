@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCOS Prediction</title>
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Background */
+        body {
+            background: linear-gradient(to right, #E0C3FC, #8EC5FC);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            overflow: hidden; /* Prevent full-page scroll */
+        }
+
+        /* Scrollable Form Container */
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 700px;
+            height: 80vh; /* Ensures it doesn't go offscreen */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* Allows scrolling inside */
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #6A0DAD;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            background: #f8f9fa;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #6A0DAD;
+            box-shadow: 0px 0px 5px rgba(106, 13, 173, 0.3);
+        }
+
+        /* Submit Button */
+        button {
+            background: #6A0DAD;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #4E0889;
+            transform: scale(1.05);
+            box-shadow: 0px 4px 12px rgba(106, 13, 173, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                height: 90vh; /* Adjust height for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>PCOS Prediction</h1>
+        <form action="/predict" method="POST">
+            <label>Age</label>
+            <input type="number" name="age" placeholder="Enter your age" required>
+
+            <label>Weight (kg)</label>
+            <input type="number" name="weight_kg" placeholder="Enter your weight" required>
+
+            <label>Hormonal Imbalance</label>
+            <select name="hormonal_imbalance">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label>Hyperandrogenism</label>
+            <select name="hyperandrogenism">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label>Hirsutism</label>
+            <select name="hirsutism">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label>Conception Difficulty</label>
+            <select name="conception_difficulty">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label>Insulin Resistance</label>
+            <select name="insulin_resistance">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label>Exercise Frequency (days per week)</label>
+            <input type="number" name="exercise_frequency" placeholder="e.g. 3" required>
+
+            <label>Exercise Type</label>
+            <select name="exercise_type">
+                <option value="0">No Exercise</option>
+                <option value="1">Cardio</option>
+                <option value="2">Strength Training</option>
+                <option value="3">Flexibility</option>
+                <option value="4">HIIT</option>
+            </select>
+
+            <label>Exercise Duration</label>
+            <select name="exercise_duration">
+                <option value="0">Not Applicable</option>
+                <option value="1">Less than 30 minutes</option>
+                <option value="2">30 minutes</option>
+                <option value="3">45 minutes</option>
+                <option value="4">More than 30 minutes</option>
+            </select>
+
+            <label>Sleep Hours per Day</label>
+            <select name="sleep_hours">
+                <option value="0">3-4 hours</option>
+                <option value="1">Less than 6 hours</option>
+                <option value="2">6-8 hours</option>
+                <option value="3">9-12 hours</option>
+                <option value="4">More than 12 hours</option>
+            </select>
+
+            <label>Exercise Benefit</label>
+            <select name="exercise_benefit">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <button type="submit">Predict PCOS Risk</button>
+        </form>
+    </div>
+
+</body>
+</html>

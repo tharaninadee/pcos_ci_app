@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCOS Prediction Result</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Background */
+        body {
+            background: linear-gradient(to right, #E0C3FC, #8EC5FC);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container */
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #6A0DAD;
+        }
+
+        .risk {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Chart Styling */
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        canvas {
+            max-width: 250px;
+            max-height: 250px;
+        }
+
+        /* Button Styling */
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background: #6A0DAD;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: #4E0889;
+            transform: scale(1.05);
+            box-shadow: 0px 4px 12px rgba(106, 13, 173, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+            canvas {
+                max-width: 200px;
+                max-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <p class="risk">
+            Predicted PCOS Probability: <strong>{{ probability }}%</strong>
+        </p>
+        <p>
+            {% if probability >= 50 %}
+                ⚠️ <span style="color: #dc3545; font-weight: 600;">High risk of PCOS.</span> Please consult a doctor.
+            {% else %}
+                ✅ <span style="color: #28a745; font-weight: 600;">Low risk of PCOS.</span>
+            {% endif %}
+        </p>
+
+        <div class="chart-container">
+            <canvas id="pieChart"></canvas>
+        </div>
+
+        <a href="/" class="back-btn">Back to Home</a>
+    </div>
+
+    <script>
+        var ctx = document.getElementById("pieChart").getContext("2d");
+        var chart = new Chart(ctx, {
+            type: "pie",
+            data: {
+                labels: ["PCOS Probability", "No PCOS Probability"],
+                datasets: [{
+                    data: [{{ probability }}, {{ 100 - probability }}],
+                    backgroundColor: ["#dc3545", "#28a745"]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+
+</body>
+</html>
