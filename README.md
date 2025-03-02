@@ -11,7 +11,7 @@ This project focuses on predicting Polycystic Ovary Syndrome (PCOS) using a Rand
 - **Web Application**: Built with **Flask** for backend processing and a **Bootstrap, CSS, and JavaScript** frontend, including a **pie chart visualization** of results.  
 
 ## **Dataset**  
-The dataset is sourced from Kaggle’s **"Exploring Health Data Factors of PCOS"** competition. 
+The dataset is sourced from Kaggle’s **"Exploring Health Data Factors of PCOS"** competition - https://www.kaggle.com/competitions/exploring-predictive-health-factors 
 
 ## **Technology Stack**  
 - **Machine Learning**: Python, Scikit-learn, Pandas, NumPy  
