@@ -2,7 +2,7 @@
 # **PCOS Prediction Using Random Forest**  
 
 ## **Overview**  
-This project focuses on predicting Polycystic Ovary Syndrome (PCOS) using a Random Forest model based on the **"Exploring Predictive Health Factors of PCOS"** dataset from Kaggle. The goal is to analyze key health factors influencing PCOS and build a robust machine-learning model to assist in early detection and diagnosis.  
+This project focuses on predicting Polycystic Ovary Syndrome (PCOS) using a Random Forest model based on the **"Exploring Predictive Health Factors of PCOS"** competition from Kaggle. The goal is to analyze key health factors influencing PCOS and build a robust machine-learning model to assist in early detection and diagnosis.  
 
 ## **Project Features**  
 - **Machine Learning Model**: Utilizes the **Random Forest** algorithm for classification.  
